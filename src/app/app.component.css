@@ -1,0 +1,10 @@
+nz-header {
+    background: #20A0FF;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+nz-header h3 {
+    color: #fff;
+    font-weight: 600;
+}

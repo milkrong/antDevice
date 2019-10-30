@@ -1,0 +1,25 @@
+<nz-card nzTitle="Top Panel">
+    <p>Please click on header to sort selected field (Single Sort Set)</p>
+    <nz-table #topTable [nzData]="topDevices">
+        <thead (nzSortChange)="sort($event)" nzSingleSort>
+            <tr>
+                <th>IP</th>
+                <th>Owner</th>
+                <th nzShowSort nzSortKey='cpuPct'>CPU</th>
+                <th nzShowSort nzSortKey='memBytes'>MEM</th>
+                <th nzShowSort nzSortKey='networkRxBytes'>RX</th>
+                <th nzShowSort nzSortKey='networkTxBytes'>TX</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of topTable.data">
+                <td>{{ data.ip}}</td>
+                <td>{{ data.owner}}</td>
+                <td>{{ data.cpuPct}} %</td>
+                <td>{{ data.memBytes | byteStr}}</td>
+                <td>{{ data.networkRxBytes | byteStr}}</td>
+                <td>{{ data.networkTxBytes | byteStr}}</td>
+            </tr>
+        </tbody>
+    </nz-table>
+</nz-card>

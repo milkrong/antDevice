@@ -1,0 +1,33 @@
+<nz-card nzTitle="Overview Devices">
+    <nz-table #deviceTable [nzData]="devices">
+        <thead>
+            <tr>
+                <th>IP</th>
+                <th>Owner</th>
+                <th>CPU</th>
+                <th>MEM</th>
+                <th>RX</th>
+                <th>TX</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of deviceTable.data">
+                <td>{{ data.ip}}</td>
+                <td>
+                    <div class="editable-cell" *ngIf="editId !== data.id; else editTpl">
+                        <div class="editable-cell-value-wrap">
+                        {{ data.owner }}
+                        </div>
+                    </div>
+                    <ng-template #editTpl>
+                        <input type="text" nz-input [(ngModel)]="data.owner" />
+                    </ng-template>
+                </td>
+                <td>{{ data.cpuPct}} %</td>
+                <td>{{ data.memBytes | byteStr}}</td>
+                <td>{{ data.networkRxBytes | byteStr}}</td>
+                <td>{{ data.networkTxBytes | byteStr}}</td>
+            </tr>
+        </tbody>
+    </nz-table>
+</nz-card>
